@@ -9,6 +9,9 @@ this file validates each subset of facts and selectively
 calls the appropriate facts gathering function
 """
 
+from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.argspec.facts.facts import (
+    FactsArgs,
+)
 from ansible.module_utils.network.common.facts.facts import FactsBase
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.facts.legacy.base import (
     Default,

@@ -132,6 +132,7 @@ def main():
     desired = get_desired(module)
 
     state = module.params["state"]
+    restart = module.params["restart"]
 
     commands = list()
 

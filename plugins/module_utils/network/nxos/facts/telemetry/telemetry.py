@@ -35,6 +35,7 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.utils.tele
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
     NxosCmdRef,
+    normalize_interface,
 )
 
 

@@ -105,11 +105,15 @@ changed:
     sample: true
 """
 
+import re
+
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
+    get_config,
     load_config,
     run_commands,
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
+    get_capabilities,
     nxos_argument_spec,
 )
 from ansible.module_utils.basic import AnsibleModule

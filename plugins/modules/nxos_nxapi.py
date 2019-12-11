@@ -175,6 +175,7 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos impor
     get_capabilities,
 )
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.six import iteritems
 
 
 def check_args(module, warnings, capabilities):

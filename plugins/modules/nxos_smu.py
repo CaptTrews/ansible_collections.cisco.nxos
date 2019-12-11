@@ -65,9 +65,12 @@ commands:
 """
 
 
+import collections
+import re
 import time
 
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
+    get_config,
     load_config,
     run_commands,
 )

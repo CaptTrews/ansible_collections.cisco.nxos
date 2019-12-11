@@ -139,6 +139,8 @@ delta:
   type: str
   sample: "0:00:10.469466"
 """
+import re
+
 from copy import deepcopy
 from functools import partial
 
@@ -150,7 +152,7 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos impor
     nxos_argument_spec,
 )
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.six import iteritems
+from ansible.module_utils.six import string_types, iteritems
 from ansible.module_utils.network.common.utils import (
     remove_default_spec,
     to_list,
@@ -188,6 +190,7 @@ def validate_roles(value, module):
 
 def map_obj_to_commands(updates, module):
     commands = list()
+    state = module.params["state"]
     update_password = module.params["update_password"]
 
     for update in updates:

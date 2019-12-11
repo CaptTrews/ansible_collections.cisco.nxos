@@ -159,6 +159,7 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos impor
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
     get_interface_type,
 )
+from ansible.module_utils.six import string_types
 
 
 PARAM_TO_COMMAND_KEYMAP = {
@@ -296,6 +297,7 @@ def get_pim_interface(module, interface):
             elif "sparse-mode" in each:
                 pim_interface["sparse"] = True
             elif "bfd-instance" in each:
+                value = "default"
                 m = re.search(
                     r"ip pim bfd-instance(?P<disable> disable)?", each
                 )
@@ -550,6 +552,7 @@ def main():
     jp_policy_out = module.params["jp_policy_out"]
     neighbor_policy = module.params["neighbor_policy"]
     neighbor_type = module.params["neighbor_type"]
+    hello_interval = module.params["hello_interval"]
 
     intf_type = get_interface_type(interface)
     if get_interface_mode(interface, intf_type, module) == "layer2":

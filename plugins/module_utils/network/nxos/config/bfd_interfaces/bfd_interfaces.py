@@ -15,13 +15,20 @@ __metaclass__ = type
 
 import re
 from ansible.module_utils.network.common.cfg.base import ConfigBase
-from ansible.module_utils.network.common.utils import dict_diff, to_list
+from ansible.module_utils.network.common.utils import (
+    dict_diff,
+    to_list,
+    remove_empties,
+)
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.facts.facts import (
     Facts,
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.utils.utils import (
     flatten_dict,
+    get_interface_type,
+    normalize_interface,
     search_obj_in_list,
+    vlan_range_to_list,
 )
 
 
@@ -64,10 +71,9 @@ class Bfd_interfaces(ConfigBase):
         warnings = list()
         cmds = list()
 
-        (
-            existing_bfd_interfaces_facts,
-            platform,
-        ) = self.get_bfd_interfaces_facts()
+        existing_bfd_interfaces_facts, platform = (
+            self.get_bfd_interfaces_facts()
+        )
         cmds.extend(self.set_config(existing_bfd_interfaces_facts, platform))
         if cmds:
             if not self._module.check_mode:
@@ -75,10 +81,9 @@ class Bfd_interfaces(ConfigBase):
             result["changed"] = True
         result["commands"] = cmds
 
-        (
-            changed_bfd_interfaces_facts,
-            platform,
-        ) = self.get_bfd_interfaces_facts()
+        changed_bfd_interfaces_facts, platform = (
+            self.get_bfd_interfaces_facts()
+        )
         result["before"] = existing_bfd_interfaces_facts
         if result["changed"]:
             result["after"] = changed_bfd_interfaces_facts

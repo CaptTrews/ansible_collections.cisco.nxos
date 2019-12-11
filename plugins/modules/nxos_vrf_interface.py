@@ -227,9 +227,12 @@ def main():
             "use nxos_interface"
         )
 
+    proposed = dict(interface=interface, vrf=vrf)
+
     current_vrf = get_interface_info(interface, module)
     existing = dict(interface=interface, vrf=current_vrf)
     changed = False
+    end_state = existing
 
     if not existing["vrf"]:
         pass
@@ -264,6 +267,8 @@ def main():
         else:
             load_config(module, commands)
             changed = True
+            changed_vrf = get_interface_info(interface, module)
+            end_state = dict(interface=interface, vrf=changed_vrf)
             if "configure" in commands:
                 commands.pop(0)
 

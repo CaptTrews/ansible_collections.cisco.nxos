@@ -409,6 +409,8 @@ def main():
     proposed = dict((k, v) for k, v in args.items() if v is not None)
     existing = get_existing_vrrp(interface, group, module, name)
 
+    changed = False
+    end_state = existing
     commands = []
 
     if state == "present":

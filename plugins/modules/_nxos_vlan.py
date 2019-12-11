@@ -191,6 +191,7 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos impor
     nxos_argument_spec,
 )
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.connection import ConnectionError
 from ansible.module_utils.network.common.config import CustomNetworkConfig
 from ansible.module_utils.network.common.utils import remove_default_spec
 

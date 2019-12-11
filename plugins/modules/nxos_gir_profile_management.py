@@ -100,9 +100,11 @@ changed:
 """
 
 
+import re
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
     get_config,
     load_config,
+    run_commands,
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
     nxos_argument_spec,

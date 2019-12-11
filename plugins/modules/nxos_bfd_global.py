@@ -151,8 +151,10 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos impor
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
     load_config,
+    run_commands,
 )
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.network.common.config import CustomNetworkConfig
 
 BFD_CMD_REF = """
 # The cmd_ref is a yaml formatted list of module commands.

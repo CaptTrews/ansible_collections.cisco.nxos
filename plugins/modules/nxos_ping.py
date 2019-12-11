@@ -19,7 +19,7 @@
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
     "status": ["preview"],
-    "supported_by": "network",
+    "supported_by": "community",
 }
 
 
@@ -211,6 +211,7 @@ def main():
     check_args(module, warnings)
 
     destination = module.params["dest"]
+    count = module.params["count"]
     state = module.params["state"]
 
     ping_command = "ping {0}".format(destination)

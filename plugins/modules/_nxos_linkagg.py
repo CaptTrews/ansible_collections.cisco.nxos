@@ -145,6 +145,7 @@ from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos impor
     run_commands,
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
+    get_capabilities,
     nxos_argument_spec,
 )
 from ansible_collections.cisco.nxos.plugins.module_utils.network.nxos.nxos import (
